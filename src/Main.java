@@ -1,15 +1,33 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Scanner scanner = new Scanner(System.in);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        System.out.println("Enter numbers (enter any non-numeric value to finish):");
+
+        // Keep reading input until a non-numeric value is entered
+        while (scanner.hasNext()) {
+            // Read the next input as a string
+            String input = scanner.next();
+
+            // Check if the input is numeric
+            if (isNumeric(input)) {
+                // If numeric, convert it to integer and display
+                int number = Integer.parseInt(input);
+                System.out.println("Input number: " + number);
+            } else {
+                // If non-numeric, break the loop
+                break;
+            }
         }
+
+        // Close the scanner
+        scanner.close();
+    }
+
+    // Method to check if a string is numeric
+    public static boolean isNumeric(String str) {
+        return str.matches("-?\\d+(\\.\\d+)?");  // Regular expression to match numeric strings
     }
 }
